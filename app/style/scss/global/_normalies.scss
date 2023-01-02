@@ -1,0 +1,142 @@
+@use "./colors.scss" as *;
+@use "./typography.scss" as *;
+@use "../util/index" as *;
+
+// @include flex(r, c, c);
+// @include flexForPhon(Hero, cr);
+// @include grid(2, 2, fr, 1rem)
+
+:root {
+	--border-radius: #{toRem(8px)};
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+html,
+html:focus-within {
+	scroll-behavior: smooth;
+}
+body {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	-webkit-font-smoothing: antialiased;
+}
+html,
+body {
+	height: 100%;
+	width: 100%;
+	overflow-x: hidden;
+}
+main {
+	min-height: 100vh;
+	width: 100vw;
+}
+.Container {
+	--container-width: 90%;
+	height: 100%;
+	width: var(--container-width, 90%);
+	margin-inline: auto;
+}
+
+li,
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	a {
+		text-decoration: none;
+	}
+}
+::-moz-focus-inner {
+	border: none;
+}
+button,
+a {
+	font: inherit;
+}
+img {
+	max-width: 100%;
+	user-select: none;
+	display: block;
+}
+.Button {
+	min-height: 3.25rem;
+	max-height: 3em;
+	width: min-content;
+	max-width: min(100%, 90vw);
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	vertical-align: middle;
+	user-select: none;
+	text-align: center;
+	appearance: button;
+	white-space: nowrap;
+	overflow: hidden;
+	cursor: pointer;
+	text-decoration: none;
+	padding: max(0.4em, 0.4rem) max(2.2em, 2.2rem);
+	font-size: var(--fs-s);
+	font-weight: var(--fw-l);
+	background-color: transparent;
+	color: var(--txt-clr);
+	border: 1px solid var(--txt-clr);
+	border-radius: var(--border-radius);
+}
+.toClickButton {
+	user-select: none;
+	overflow: hidden;
+	cursor: pointer;
+	text-decoration: none;
+	border: none;
+	border-radius: var(--border-radius);
+}
+.visually-hidden {
+	position: absolute;
+	position: absolute !important;
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0 !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	clip: rect(0, 0, 0, 0) !important;
+	white-space: nowrap !important;
+	border: 0 !important;
+}
+#bg-out-Of-Focus[aria-expanded="false"] {
+	display: none;
+}
+#bg-out-Of-Focus[aria-expanded="true"] {
+	width: 100vw;
+	height: 100vh;
+	@include flex(r, c, c);
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	background-color: hsla(var(--clr-alpha-black), 0.7);
+	#rules {
+		padding: 1.5rem 0;
+		width: 30%;
+		@include flex(c, c, c);
+		gap: 1.5rem;
+		background-color: var(--clr-white);
+		border-radius: var(--border-radius);
+		.rules__header {
+			width: 100%;
+			.Container {
+				@include flex(r, sb, c);
+				h2 {
+					color: var(--clr-dark-blue-800);
+				}
+			}
+		}
+		.rules__game-rules {
+			@include flex(c, c, c);
+		}
+	}
+}

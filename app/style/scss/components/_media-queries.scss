@@ -1,0 +1,126 @@
+@use "../global/index" as *;
+@use "../util/index" as *;
+
+// @include flexQueries(r, c, c);
+// @include flexForPhon(cr,2);
+// @include grid(2, 2, fr, 1rem)
+
+@media screen and (max-width: #{toEm(2560px)}) {
+}
+@media screen and (min-width: #{toEm(2560px)}) {
+}
+// For 4K
+
+@media screen and (max-width: #{toEm(1600px)}) {
+}
+// For L Monitor
+
+@media screen and (max-width: #{toEm(1440px)}) {
+	// .Container {
+	// }
+}
+// For Monitor
+
+@media screen and (max-width: #{toEm(1024px)}) {
+}
+@media screen and (min-width: #{toEm(1025px)}) {
+}
+// For laptop, S-Monitor
+
+@media screen and (max-width: #{toEm(768px)}) {
+	:root {
+		--Header-padding: 2rem;
+	}
+	.main-header {
+		.Container {
+			--container-width: 90%;
+		}
+	}
+
+	.the-game {
+		.Container {
+			--container-width: 90%;
+			.game__hero {
+				.hero-items {
+					--triangle-width: 45vw;
+					--item-size: 25vw;
+				}
+			}
+			.b {
+				.Button {
+					width: 100%;
+				}
+			}
+		}
+	}
+	#bg-out-Of-Focus[aria-expanded="true"] {
+		#rules {
+			width: 90%;
+		}
+	}
+}
+@media screen and (min-width: #{toEm(769px)}) {
+}
+
+@media screen and (max-width: #{toEm(425px)}) {
+	:root {
+		--Header-padding: 2rem;
+	}
+	.main-header {
+		.Container {
+			--container-width: 90%;
+		}
+		.main-header__Container {
+			.main-header__Logo {
+				max-width: 50%;
+			}
+			.score {
+				max-width: 50%;
+				&__button {
+					padding: max(0.5em, 0.5rem) max(1em, 1rem);
+				}
+			}
+		}
+	}
+}
+
+/*For tablets */
+
+// @media screen and (max-width: #{toEm(375px)}) {
+// 	.Container {
+// 	}
+// }
+// For S phones
+// @media screen and (max-width: #{toEm(320px)}) {
+// 	.Container {
+// 	}
+// }
+// For xS phones
+
+// @supports (scroll-snap-points-y: repeat(100vh)) {
+// 	html,
+// 	html:focus-within {
+// 		scroll-snap-points-y: repeat(100vh);
+// 	}
+// }
+@supports (overflow-x: clip) {
+	html,
+	body {
+		overflow-x: clip;
+	}
+}
+
+/* For people who have motion sickness. */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	::before,
+	::after {
+		animation-delay: -1ms !important;
+		animation-duration: 1ms !important;
+		animation-iteration-count: 1 !important;
+		background-attachment: initial !important;
+		scroll-behavior: auto !important;
+		transition-delay: 0s !important;
+		transition-duration: 0s !important;
+	}
+}

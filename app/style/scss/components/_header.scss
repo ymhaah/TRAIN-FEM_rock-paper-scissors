@@ -1,0 +1,51 @@
+@use "../global/index" as *;
+@use "../util/index" as *;
+:root {
+	--Header-hight: calc(15rem - 2vh + 2vw);
+	--Header-padding: 3rem;
+}
+.main-header {
+	min-height: var(--Header-hight);
+	width: 100vw;
+	padding: var(--Header-padding) 0 0 0;
+	background-color: transparent;
+	.Container {
+		--container-width: 60%;
+	}
+	.main-header__Container {
+		@include flex(r, sb, c);
+		gap: 1rem;
+		border: #{toRem(2px)} solid hsla(var(--clr-alpha-white) / 0.5);
+		border-radius: var(--border-radius);
+		padding: calc(var(--Header-padding) / 2);
+		.main-header__Logo {
+			height: 100%;
+			@include flex(n, c, c);
+			a {
+				height: 100%;
+				cursor: pointer;
+				img {
+					height: 100%;
+				}
+			}
+		}
+		.score {
+			height: 100%;
+			&__button {
+				height: 100%;
+				width: 100%;
+				background-color: var(--txt-clr);
+				padding: max(0.5em, 0.5rem) max(2.5em, 2.5rem);
+				.score__heading--small {
+					font-size: var(--fs-s);
+					font-weight: var(--fw-l);
+					color: var(--score-text-clr);
+					span {
+						display: block;
+						color: var(--score-num-clr);
+					}
+				}
+			}
+		}
+	}
+}

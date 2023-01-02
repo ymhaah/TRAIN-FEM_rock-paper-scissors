@@ -1,0 +1,57 @@
+@use "./colors.scss" as *;
+@use "../util/index" as *;
+
+:root {
+	// font family
+	--font-family: "Barlow Semi Condensed", sans-serif;
+
+	// font sizes
+	--fs-s: #{ClampCalc(16px, 22px)};
+	--fs-m: #{ClampCalc(22px, 26px)};
+	--fs-l: #{ClampCalc(56px, 60px)};
+
+	//Weights
+	--fw-l: 600;
+	--fw-b: 700;
+}
+
+body {
+	font-family: var(--font-family);
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+a:not(.Button),
+.Button {
+	margin: 0;
+	text-transform: uppercase;
+	letter-spacing: #{toRem(2.5px)};
+	color: var(--txt-clr);
+}
+
+h1,
+.h1 {
+}
+h2,
+.h2 {
+	font-size: var(--fs-l);
+	font-weight: var(--fw-b);
+}
+h3,
+.h3 {
+	font-size: var(--fs-m);
+	font-weight: var(--fw-l);
+}
+p,
+.p {
+	font-size: var(--fs-l);
+	font-weight: var(--fw-b);
+}
+a:not(.Button) {
+	font-size: var(--fs-s);
+	font-weight: var(--fw-m);
+	text-decoration: none;
+}

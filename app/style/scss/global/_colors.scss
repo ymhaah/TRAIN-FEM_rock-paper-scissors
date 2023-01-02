@@ -1,0 +1,66 @@
+:root {
+	--clr-gray-600: hsl(229, 25%, 31%);
+	--clr-gray-400: hsl(217, 16%, 45%);
+
+	--clr-dark-blue-800: hsl(237, 49%, 15%);
+	--clr-dark-blue-700: hsl(214, 47%, 23%);
+
+	--clr-blue-800: hsl(229, 64%, 46%);
+	--clr-blue-600: hsl(230, 89%, 62%);
+	--clr-blue-500: hsl(230, 89%, 65%);
+
+	--clr-red-900: hsl(346, 71%, 35%);
+	--clr-red-800: hsl(349, 71%, 52%);
+	--clr-red-700: hsl(349, 70%, 56%);
+
+	--clr-yellow-900: hsl(28, 76%, 44%);
+	--clr-yellow-800: hsl(39, 89%, 49%);
+	--clr-yellow-700: hsl(40, 84%, 53%);
+
+	--clr-white: hsl(0, 0%, 100%);
+	--clr-black: hsl(0, 0%, 0%);
+
+	// alpha
+	--clr-alpha-white: 0 0% 100%;
+	--clr-alpha-black: 0, 0%, 0%;
+	--clr-alpha-gray-400: 217 16% 45%;
+
+	// main
+	--bg-grad2: var(--clr-dark-blue-800);
+	--bg-grad1: var(--clr-dark-blue-700);
+	--txt-clr: hsla(var(--clr-alpha-white) / 0.9);
+	--accent-clr: var(--clr-blue-600);
+	--score-text-clr: var(--clr-blue-800);
+	--header-outline-clr: var(--clr-gray-400);
+	--score-num-clr: var(--clr-gray-600);
+	// game items
+	--rock-shadow: var(--clr-red-900);
+	--paper-shadow: var(--clr-blue-800);
+	--scissors-shadow: var(--clr-yellow-900);
+	color-scheme: light;
+}
+
+.radial-gradient {
+	--grad2-deg: 100%;
+	--grad1-deg: 50%;
+	background: var(--bg-grad1);
+	background: radial-gradient(
+		circle,
+		var(--bg-grad1) var(--grad1-deg, 0%),
+		var(--bg-grad2) var(--grad2-deg, 100%)
+	);
+}
+
+.linear-gradient {
+	--deg: 180deg;
+	--grad2-deg: 100%;
+	--grad1-deg: 0%;
+	--grad2-clr: ;
+	--grad1-clr: ;
+	background: var(--grad1-clr);
+	background: linear-gradient(
+		var(--deg),
+		var(--grad1-clr) var(--grad1-deg),
+		var(--grad2-clr) var(--grad2-deg)
+	);
+}

@@ -1,0 +1,102 @@
+@use "../global/index" as *;
+@use "../util/index" as *;
+
+// @include flex(r, c, c);
+// @include flexForPhon(cr,2);
+// @include grid(2, 2, fr, 1rem)
+
+.the-game {
+	width: 100vw;
+	height: calc(100vh - var(--Header-hight));
+	.Container {
+		--container-width: 80%;
+		position: relative;
+		.game__hero {
+			width: 100%;
+			height: 100%;
+			@include flex(r, c, c);
+			h3[aria-hidden="true"] {
+				display: none;
+			}
+			h3[aria-hidden="false"] {
+				display: inline;
+			}
+
+			.hero-items {
+				--triangle-width: 30vw;
+				--item-size: 12vw;
+				@include flex(r, c, c);
+				width: calc(calc(var(--item-size) * 2) + var(--triangle-width));
+				height: calc(var(--item-size) + var(--triangle-width));
+				position: relative;
+				img {
+					width: var(--triangle-width);
+				}
+				.hero__item {
+					width: var(--item-size);
+					height: var(--item-size);
+					border-radius: 50%;
+					@include flex(r, c, c);
+					position: absolute;
+					.toClickButton {
+						width: calc(var(--item-size) / 1.4);
+						height: calc(var(--item-size) / 1.4);
+						border-radius: 50%;
+						background-color: var(--txt-clr);
+						box-shadow: inset 0px #{toRem(8px)} 0 hsla(var(
+										--clr-alpha-gray-400
+									) / 0.3);
+						@include flex(r, c, c);
+						img {
+							width: 50%;
+						}
+					}
+				}
+				.hero__item--rock.linear-gradient {
+					--grad2-clr: var(--clr-red-800);
+					--grad1-clr: var(--clr-red-700);
+					box-shadow: inset 0px -8px 0 var(--rock-shadow),
+						0px 0px 20px 10px hsl(0deg 0% 0% / 20%);
+				}
+				.hero__item--paper.linear-gradient {
+					--grad2-clr: var(--clr-blue-600);
+					--grad1-clr: var(--clr-blue-500);
+					box-shadow: inset 0px -8px 0 var(--paper-shadow),
+						0px 0px 20px 10px hsl(0deg 0% 0% / 20%);
+				}
+				.hero__item--scissors.linear-gradient {
+					--grad2-clr: var(--clr-yellow-800);
+					--grad1-clr: var(--clr-yellow-700);
+					box-shadow: inset 0px -8px 0 var(--scissors-shadow),
+						0px 0px 20px 10px hsl(0deg 0% 0% / 20%);
+				}
+			}
+		}
+		.game__hero[data-animation-start="false"] {
+			.hero-items {
+				.hero__item--rock {
+					top: 0;
+					left: calc(var(--item-size) / 2);
+				}
+				.hero__item--paper {
+					top: 0;
+					right: calc(var(--item-size) / 2);
+				}
+				.hero__item--scissors {
+					bottom: 0;
+					left: calc(50% + calc(var(--item-size) / 2 * -1));
+				}
+			}
+		}
+		.game__hero[data-animation-start="true"] {
+		}
+		.b {
+			position: absolute;
+			width: 100%;
+			bottom: 0;
+			left: 0;
+			@include flex(r, sb, c);
+			padding: 1rem 0;
+		}
+	}
+}
