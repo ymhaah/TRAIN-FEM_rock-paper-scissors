@@ -15,7 +15,7 @@
   --clr-white: hsl(0, 0%, 100%);
   --clr-black: hsl(0, 0%, 0%);
   --clr-alpha-white: 0 0% 100%;
-  --clr-alpha-black: 0, 0%, 0%;
+  --clr-alpha-black: 0 0% 0%;
   --clr-alpha-gray-400: 217 16% 45%;
   --bg-grad2: var(--clr-dark-blue-800);
   --bg-grad1: var(--clr-dark-blue-700);
@@ -334,12 +334,7 @@ img {
 .the-game .Container .game__hero {
   width: 100%;
   height: 100%;
-}
-.the-game .Container .game__hero h3[aria-hidden=true] {
-  display: none;
-}
-.the-game .Container .game__hero h3[aria-hidden=false] {
-  display: inline;
+  position: relative;
 }
 .the-game .Container .game__hero .hero-items {
   --triangle-width: 30vw;
@@ -351,21 +346,45 @@ img {
 .the-game .Container .game__hero .hero-items img {
   width: var(--triangle-width);
 }
+.the-game .Container .game__hero .hero-items h3 {
+  text-align: center;
+  position: absolute;
+  opacity: 0;
+  top: -8rem;
+}
+.the-game .Container .game__hero .hero-items .l {
+  left: 0;
+}
+.the-game .Container .game__hero .hero-items .r {
+  right: 0;
+}
 .the-game .Container .game__hero .hero-items .hero__item {
   width: var(--item-size);
   height: var(--item-size);
   border-radius: 50%;
   position: absolute;
+  z-index: 1;
 }
 .the-game .Container .game__hero .hero-items .hero__item .toClickButton {
   width: calc(var(--item-size) / 1.4);
   height: calc(var(--item-size) / 1.4);
   border-radius: 50%;
   background-color: var(--txt-clr);
-  box-shadow: inset 0px 0.5rem 0 hsla(var(--clr-alpha-gray-400)/0.3);
 }
 .the-game .Container .game__hero .hero-items .hero__item .toClickButton img {
   width: 50%;
+}
+.the-game .Container .game__hero .hero-items .hero__item--rock {
+  top: 0;
+  left: calc(var(--item-size) / 2);
+}
+.the-game .Container .game__hero .hero-items .hero__item--paper {
+  top: 0;
+  right: calc(var(--item-size) / 2);
+}
+.the-game .Container .game__hero .hero-items .hero__item--scissors {
+  bottom: 0;
+  left: calc(50% + var(--item-size) / 2 * -1);
 }
 .the-game .Container .game__hero .hero-items .hero__item--rock.linear-gradient {
   --grad2-clr: var(--clr-red-800);
@@ -382,17 +401,15 @@ img {
   --grad1-clr: var(--clr-yellow-700);
   box-shadow: inset 0px -8px 0 var(--scissors-shadow), 0px 0px 20px 10px hsla(0deg, 0%, 0%, 0.2);
 }
-.the-game .Container .game__hero[data-animation-start=false] .hero-items .hero__item--rock {
+.the-game .Container .game__hero .hero-items .shadow {
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
   top: 0;
-  left: calc(var(--item-size) / 2);
-}
-.the-game .Container .game__hero[data-animation-start=false] .hero-items .hero__item--paper {
-  top: 0;
-  right: calc(var(--item-size) / 2);
-}
-.the-game .Container .game__hero[data-animation-start=false] .hero-items .hero__item--scissors {
-  bottom: 0;
-  left: calc(50% + var(--item-size) / 2 * -1);
+  background-color: hsla(var(--clr-alpha-black)/0.2);
+  opacity: 0;
 }
 .the-game .Container .b {
   position: absolute;

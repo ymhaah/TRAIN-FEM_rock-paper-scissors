@@ -1,6 +1,6 @@
 import { setSpecialThings, changeAttribute, log } from "./functions.js";
 import { header, game } from "./var.js";
-import { gChosen, gNotChosen, gHouse } from "./gsap.js";
+import { gChosen, gNotChosen, gHouse, gWinner } from "./gsap.js";
 
 log(`Made with Love by Youssef Hafnawy`);
 ////////////////////////////////////////////////////////////////////////
@@ -67,11 +67,9 @@ game.items.forEach((item) => {
 			item,
 			game.items,
 			function (prop) {
-				// changeAttribute(prop.body, "date-chosen", true);
 				gChosen(prop.body);
 			},
 			function (prop) {
-				// changeAttribute(prop.body, "date-chosen", false);
 				gNotChosen(prop.body);
 			}
 		);
@@ -82,13 +80,9 @@ game.items.forEach((item) => {
 			house,
 			game.items,
 			function (prop) {
-				// changeAttribute(prop.body, "date-house-chosen", true);
 				gHouse(prop.body);
-				changeAttribute(hero, "data-animation-start", true);
 			},
-			function (prop) {
-				// changeAttribute(prop.body, "date-house-chosen", false);
-			}
+			function () {}
 		);
 		let chosenItems = item != house ? [item, house] : [item];
 
@@ -97,15 +91,9 @@ game.items.forEach((item) => {
 				chosenItems,
 				game.items,
 				function (prop) {
-					if (prop.body == winner.body) {
-						// changeAttribute(prop.body, "date-wining", true);
-					} else {
-						// changeAttribute(prop.body, "date-wining", false);
-					}
+					gWinner(winner.body);
 				},
-				function (prop) {
-					// changeAttribute(prop.body, "date-wining", false);
-				}
+				function () {}
 			);
 		}
 
