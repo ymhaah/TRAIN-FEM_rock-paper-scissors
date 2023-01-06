@@ -99,8 +99,6 @@
 								alt=""
 								class="triangle"
 							/>
-							<h3 class="l">You Picked</h3>
-							<h3 class="r">House Picked</h3>
 							<div
 								class="hero__item--rock linear-gradient hero__item"
 								date-house-chosen="false"
@@ -144,10 +142,14 @@
 							</div>
 							<div class="shadow"></div>
 						</div>
-						<div id="game-result">
+						<div id="game-result" aria-hidden="true">
 							<div class="game-result__text">
-								<p aria-hidden="true">You Win</p>
-								<p aria-hidden="true">You Lose</p>
+								<p aria-hidden="true" class="you-win">
+									You Win
+								</p>
+								<p aria-hidden="true" class="you-lose">
+									You Lose
+								</p>
 							</div>
 							<button
 								type="button"

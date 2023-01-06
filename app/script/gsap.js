@@ -3,7 +3,8 @@ import { header, game } from "./var.js";
 
 let triangle = document.querySelector(".triangle");
 let shadow = document.querySelector(".shadow");
-let pick = document.querySelectorAll(".hero-items > h3");
+
+let afterResultSection = document.querySelector("#game-result");
 
 let duration = 1;
 let delay = 0.2;
@@ -14,7 +15,7 @@ function gChosen(ele) {
 		delay: delay,
 		scale: 1.2,
 		left: 0,
-		top: 0,
+		top: `calc(50% - ${ele.offsetHeight / 2}px)`,
 		bottom: "unset",
 		right: "unset",
 	});
@@ -42,13 +43,8 @@ function gHouse(ele) {
 	})
 		.to(shadow, {
 			duration: duration,
-			width: "12vw",
-			height: "12vw",
-			opacity: 1,
-		})
-		.to(pick, {
-			duration: duration,
-			stagger: 0.2,
+			width: `${ele.offsetHeight}px`,
+			height: `${ele.offsetHeight}px`,
 			opacity: 1,
 		})
 		.to(ele, {
@@ -56,14 +52,14 @@ function gHouse(ele) {
 			opacity: 1,
 			scale: 1.2,
 			right: 0,
-			top: 0,
+			top: `calc(50% - ${ele.offsetHeight / 2}px)`,
 			bottom: "unset",
 			left: "unset",
 		});
 }
 
 function gWinner(ele) {
-	duration = duration - 0.2;
+	duration = duration - 0.4;
 	delay = 6;
 	let tl = gsap.timeline();
 
@@ -76,9 +72,12 @@ function gWinner(ele) {
 			duration: duration,
 			delay: delay,
 			"box-shadow":
-				"0 0 0 1rem hsla(0 0% 100% / 0.2), 0 0 0 2rem hsla(0 0% 100% / 0.2),0 0 0 3rem hsla(0 0% 100% / 0.2)",
+				"0 0 0 15px hsla(0 0% 100% / 0.2), 0 0 0 30px hsla(0 0% 100% / 0.2),0 0 0 45px hsla(0 0% 100% / 0.2)",
 		}
-	);
+	).to(afterResultSection, {
+		duration: duration,
+		opacity: 1,
+	});
 }
 
 export { gChosen, gNotChosen, gHouse, gWinner };

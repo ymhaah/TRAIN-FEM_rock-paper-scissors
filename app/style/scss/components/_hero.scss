@@ -16,29 +16,23 @@
 			height: 100%;
 			@include flex(r, c, c);
 			position: relative;
-
 			.hero-items {
 				--triangle-width: 30vw;
 				--item-size: 12vw;
 				@include flex(r, c, c);
-				width: calc(calc(var(--item-size) * 2) + var(--triangle-width));
-				height: calc(var(--item-size) + var(--triangle-width));
+				width: min(
+					calc(calc(var(--item-size) * 2) + var(--triangle-width)),
+					100%
+				);
+				height: min(
+					calc(var(--item-size) + var(--triangle-width)),
+					100%
+				);
 				position: relative;
 				img {
 					width: var(--triangle-width);
 				}
-				h3 {
-					text-align: center;
-					position: absolute;
-					opacity: 0;
-					top: -8rem;
-				}
-				.l {
-					left: 0;
-				}
-				.r {
-					right: 0;
-				}
+
 				.hero__item {
 					width: var(--item-size);
 					height: var(--item-size);
@@ -51,9 +45,9 @@
 						height: calc(var(--item-size) / 1.4);
 						border-radius: 50%;
 						background-color: var(--txt-clr);
-						// box-shadow: inset 0px #{toRem(8px)} 0 hsla(var(
-						// 				--clr-alpha-gray-400
-						// 			) / 0.3);
+						box-shadow: inset 0px #{toRem(8px)} 0 hsla(var(
+										--clr-alpha-gray-400
+									) / 0.3);
 						@include flex(r, c, c);
 						img {
 							width: 50%;
@@ -96,9 +90,23 @@
 					border-radius: 50%;
 					position: absolute;
 					right: 0;
-					top: 0;
+					top: calc(50% - calc(var(--item-size) / 2));
 					background-color: hsla(var(--clr-alpha-black) / 0.2);
 					opacity: 0;
+				}
+			}
+			#game-result {
+				display: none;
+			}
+			#game-result[aria-hidden="false"] {
+				@include flex(c, c, c);
+				position: absolute;
+				opacity: 0;
+				p[aria-hidden="true"] {
+					display: none;
+				}
+				p {
+					margin-bottom: 1rem;
 				}
 			}
 		}

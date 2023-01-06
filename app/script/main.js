@@ -5,21 +5,6 @@ import { gChosen, gNotChosen, gHouse, gWinner } from "./gsap.js";
 log(`Made with Love by Youssef Hafnawy`);
 ////////////////////////////////////////////////////////////////////////
 
-let resultTextArr = [...document.querySelectorAll(".game-result__text p")];
-
-function announceResult(result) {
-	setSpecialThings(
-		result,
-		resultTextArr,
-		function (test1) {
-			changeAttribute(test1, "aria-hidden", false);
-		},
-		function (test2) {
-			changeAttribute(test2, "aria-hidden", true);
-		}
-	);
-}
-
 let resetButton = document.querySelector("#resetButton");
 
 window.localStorage.setItem(
@@ -47,19 +32,36 @@ resetButton.onclick = () => {
 // ######################################
 let hero = document.querySelector(".game__hero");
 
+let afterResultSection = document.querySelector("#game-result");
+let playAgainButton = document.querySelector("#game-result button");
+
+function setAfterResultState() {
+	changeAttribute(afterResultSection, "aria-hidden", false);
+	changeAttribute(playAgainButton, "tabindex", 0);
+}
+function setBeforeResultState() {
+	changeAttribute(afterResultSection, "aria-hidden", true);
+	changeAttribute(playAgainButton, "tabindex", -1);
+}
+
 // to pick a random item
 function housePicked() {
 	let rand = Math.floor(Math.random() * Object.keys(game.items).length);
 	return game.items[rand];
 }
+let house = housePicked();
 
 game.items.forEach((item) => {
 	item.button.onclick = () => {
-		let house = housePicked();
-
 		if (house.name == item.name) {
 			// if draw
 			house = housePicked();
+			if (house.name == item.name) {
+				house = housePicked();
+				if (house.name == item.name) {
+					house = housePicked();
+				}
+			}
 		}
 
 		// ######################################
@@ -92,6 +94,7 @@ game.items.forEach((item) => {
 				game.items,
 				function (prop) {
 					gWinner(winner.body);
+					setAfterResultState();
 				},
 				function () {}
 			);
@@ -103,7 +106,11 @@ game.items.forEach((item) => {
 			// if you lose
 			updateScoreValue(--scoreValueNum);
 			SetWinner(house);
-			announceResult(resultTextArr[1]);
+			changeAttribute(
+				document.querySelector(".you-lose"),
+				"aria-hidden",
+				false
+			);
 			// to stop the score value to get under 0
 			if (scoreValueNum < 0) {
 				resetLocalStorage();
@@ -113,7 +120,11 @@ game.items.forEach((item) => {
 			// if you win
 			updateScoreValue(++scoreValueNum);
 			SetWinner(item);
-			announceResult(resultTextArr[0]);
+			changeAttribute(
+				document.querySelector(".you-win"),
+				"aria-hidden",
+				false
+			);
 			console.log("winner");
 		} else {
 			// if something go wrong
@@ -124,20 +135,6 @@ game.items.forEach((item) => {
 });
 
 // window.localStorage.clear();
-
-// ##############################################################
-
-let afterResultSection = document.querySelector("#game-result");
-let playAgainButton = document.querySelector("#game-result button");
-
-function setAfterResultState() {
-	changeAttribute(afterResultSection, "aria-hidden", false);
-	changeAttribute(playAgainButton, "tabindex", 0);
-}
-function setBeforeResultState() {
-	changeAttribute(afterResultSection, "aria-hidden", true);
-	changeAttribute(playAgainButton, "tabindex", -1);
-}
 
 // ##############################################################
 

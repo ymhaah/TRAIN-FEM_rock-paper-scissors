@@ -41,14 +41,21 @@
 		.Container {
 			--container-width: 90%;
 			.game__hero {
+				@include flexQueries(c, fs, c);
 				.hero-items {
-					--triangle-width: 45vw;
+					--triangle-width: 42vw;
 					--item-size: 25vw;
+				}
+				#game-result[aria-hidden="false"] {
+					top: 40%;
 				}
 			}
 			.b {
 				.Button {
 					width: 100%;
+				}
+				& :first-child {
+					margin-right: 1rem;
 				}
 			}
 		}

@@ -47,7 +47,7 @@
   background: linear-gradient(var(--deg), var(--grad1-clr) var(--grad1-deg), var(--grad2-clr) var(--grad2-deg));
 }
 
-.the-game .Container .game__hero, .the-game .Container .game__hero .hero-items, .the-game .Container .game__hero .hero-items .hero__item, .the-game .Container .game__hero .hero-items .hero__item .toClickButton, .the-game .Container .b, .main-header .main-header__Container, .main-header .main-header__Container .main-header__Logo, #bg-out-Of-Focus[aria-expanded=true], #bg-out-Of-Focus[aria-expanded=true] #rules, #bg-out-Of-Focus[aria-expanded=true] #rules .rules__header .Container, #bg-out-Of-Focus[aria-expanded=true] #rules .rules__game-rules {
+.the-game .Container .game__hero, .the-game .Container .game__hero .hero-items, .the-game .Container .game__hero .hero-items .hero__item, .the-game .Container .game__hero .hero-items .hero__item .toClickButton, .the-game .Container .game__hero #game-result[aria-hidden=false], .the-game .Container .b, .main-header .main-header__Container, .main-header .main-header__Container .main-header__Logo, #bg-out-Of-Focus[aria-expanded=true], #bg-out-Of-Focus[aria-expanded=true] #rules, #bg-out-Of-Focus[aria-expanded=true] #rules .rules__header .Container, #bg-out-Of-Focus[aria-expanded=true] #rules .rules__game-rules {
   display: flex;
 }
 
@@ -55,11 +55,11 @@
   flex-direction: row;
 }
 
-#bg-out-Of-Focus[aria-expanded=true] #rules, #bg-out-Of-Focus[aria-expanded=true] #rules .rules__game-rules {
+.the-game .Container .game__hero #game-result[aria-hidden=false], #bg-out-Of-Focus[aria-expanded=true] #rules, #bg-out-Of-Focus[aria-expanded=true] #rules .rules__game-rules {
   flex-direction: column;
 }
 
-.the-game .Container .game__hero, .the-game .Container .game__hero .hero-items, .the-game .Container .game__hero .hero-items .hero__item, .the-game .Container .game__hero .hero-items .hero__item .toClickButton, .main-header .main-header__Container .main-header__Logo, #bg-out-Of-Focus[aria-expanded=true], #bg-out-Of-Focus[aria-expanded=true] #rules, #bg-out-Of-Focus[aria-expanded=true] #rules .rules__game-rules {
+.the-game .Container .game__hero, .the-game .Container .game__hero .hero-items, .the-game .Container .game__hero .hero-items .hero__item, .the-game .Container .game__hero .hero-items .hero__item .toClickButton, .the-game .Container .game__hero #game-result[aria-hidden=false], .main-header .main-header__Container .main-header__Logo, #bg-out-Of-Focus[aria-expanded=true], #bg-out-Of-Focus[aria-expanded=true] #rules, #bg-out-Of-Focus[aria-expanded=true] #rules .rules__game-rules {
   justify-content: center;
 }
 
@@ -67,7 +67,7 @@
   justify-content: space-between;
 }
 
-.the-game .Container .game__hero, .the-game .Container .game__hero .hero-items, .the-game .Container .game__hero .hero-items .hero__item, .the-game .Container .game__hero .hero-items .hero__item .toClickButton, .the-game .Container .b, .main-header .main-header__Container, .main-header .main-header__Container .main-header__Logo, #bg-out-Of-Focus[aria-expanded=true], #bg-out-Of-Focus[aria-expanded=true] #rules, #bg-out-Of-Focus[aria-expanded=true] #rules .rules__header .Container, #bg-out-Of-Focus[aria-expanded=true] #rules .rules__game-rules {
+.the-game .Container .game__hero, .the-game .Container .game__hero .hero-items, .the-game .Container .game__hero .hero-items .hero__item, .the-game .Container .game__hero .hero-items .hero__item .toClickButton, .the-game .Container .game__hero #game-result[aria-hidden=false], .the-game .Container .b, .main-header .main-header__Container, .main-header .main-header__Container .main-header__Logo, #bg-out-Of-Focus[aria-expanded=true], #bg-out-Of-Focus[aria-expanded=true] #rules, #bg-out-Of-Focus[aria-expanded=true] #rules .rules__header .Container, #bg-out-Of-Focus[aria-expanded=true] #rules .rules__game-rules {
   align-items: center;
 }
 
@@ -105,7 +105,7 @@ h2,
 
 h3,
 .h3 {
-  font-size: var(--fs-m);
+  font-size: var(--fs-s);
   font-weight: var(--fw-l);
 }
 
@@ -339,24 +339,12 @@ img {
 .the-game .Container .game__hero .hero-items {
   --triangle-width: 30vw;
   --item-size: 12vw;
-  width: calc(var(--item-size) * 2 + var(--triangle-width));
-  height: calc(var(--item-size) + var(--triangle-width));
+  width: min(var(--item-size) * 2 + var(--triangle-width), 100%);
+  height: min(var(--item-size) + var(--triangle-width), 100%);
   position: relative;
 }
 .the-game .Container .game__hero .hero-items img {
   width: var(--triangle-width);
-}
-.the-game .Container .game__hero .hero-items h3 {
-  text-align: center;
-  position: absolute;
-  opacity: 0;
-  top: -8rem;
-}
-.the-game .Container .game__hero .hero-items .l {
-  left: 0;
-}
-.the-game .Container .game__hero .hero-items .r {
-  right: 0;
 }
 .the-game .Container .game__hero .hero-items .hero__item {
   width: var(--item-size);
@@ -370,6 +358,7 @@ img {
   height: calc(var(--item-size) / 1.4);
   border-radius: 50%;
   background-color: var(--txt-clr);
+  box-shadow: inset 0px 0.5rem 0 hsla(var(--clr-alpha-gray-400)/0.3);
 }
 .the-game .Container .game__hero .hero-items .hero__item .toClickButton img {
   width: 50%;
@@ -407,9 +396,22 @@ img {
   border-radius: 50%;
   position: absolute;
   right: 0;
-  top: 0;
+  top: calc(50% - var(--item-size) / 2);
   background-color: hsla(var(--clr-alpha-black)/0.2);
   opacity: 0;
+}
+.the-game .Container .game__hero #game-result {
+  display: none;
+}
+.the-game .Container .game__hero #game-result[aria-hidden=false] {
+  position: absolute;
+  opacity: 0;
+}
+.the-game .Container .game__hero #game-result[aria-hidden=false] p[aria-hidden=true] {
+  display: none;
+}
+.the-game .Container .game__hero #game-result[aria-hidden=false] p {
+  margin-bottom: 1rem;
 }
 .the-game .Container .b {
   position: absolute;
@@ -429,12 +431,24 @@ img {
   .the-game .Container {
     --container-width: 90%;
   }
+  .the-game .Container .game__hero {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+  }
   .the-game .Container .game__hero .hero-items {
-    --triangle-width: 45vw;
+    --triangle-width: 42vw;
     --item-size: 25vw;
+  }
+  .the-game .Container .game__hero #game-result[aria-hidden=false] {
+    top: 40%;
   }
   .the-game .Container .b .Button {
     width: 100%;
+  }
+  .the-game .Container .b :first-child {
+    margin-right: 1rem;
   }
   #bg-out-Of-Focus[aria-expanded=true] #rules {
     width: 90%;
