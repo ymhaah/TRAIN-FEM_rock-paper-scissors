@@ -43,8 +43,4 @@ function changeAttribute(element, attribute, value) {
 	element.setAttribute(attribute, value);
 }
 
-function log(toLog) {
-	console.log(toLog);
-}
-
-export { setSpecialThings, changeAttribute, log };
+export { setSpecialThings, changeAttribute };

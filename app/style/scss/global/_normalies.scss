@@ -9,15 +9,10 @@
 :root {
 	--border-radius: #{toRem(8px)};
 }
-
 *,
 *::before,
 *::after {
 	box-sizing: border-box;
-}
-html,
-html:focus-within {
-	scroll-behavior: smooth;
 }
 body {
 	position: relative;
@@ -42,15 +37,10 @@ main {
 	margin-inline: auto;
 }
 
-li,
-ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	a {
-		text-decoration: none;
-	}
+a {
+	text-decoration: none;
 }
+
 ::-moz-focus-inner {
 	border: none;
 }
@@ -118,7 +108,7 @@ img {
 	z-index: 100;
 	top: 0;
 	left: 0;
-	background-color: hsla(var(--clr-alpha-black), 0.7);
+	background-color: hsla(var(--clr-alpha-black) / 0.7);
 	#rules {
 		padding: 1.5rem 0;
 		width: 30%;

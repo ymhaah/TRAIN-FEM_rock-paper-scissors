@@ -195,17 +195,3 @@
 		gap: $gap;
 	}
 }
-
-%width-100vw {
-	width: 100vw;
-}
-%width-100p {
-	width: 100%;
-}
-@mixin width($type) {
-	@if $type == "vw" {
-		@extend %width-100vw;
-	} @else if $type == "p" {
-		@extend %width-100p;
-	}
-}

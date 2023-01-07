@@ -5,28 +5,6 @@
 // @include flexForPhon(cr,2);
 // @include grid(2, 2, fr, 1rem)
 
-@media screen and (max-width: #{toEm(2560px)}) {
-}
-@media screen and (min-width: #{toEm(2560px)}) {
-}
-// For 4K
-
-@media screen and (max-width: #{toEm(1600px)}) {
-}
-// For L Monitor
-
-@media screen and (max-width: #{toEm(1440px)}) {
-	// .Container {
-	// }
-}
-// For Monitor
-
-@media screen and (max-width: #{toEm(1024px)}) {
-}
-@media screen and (min-width: #{toEm(1025px)}) {
-}
-// For laptop, S-Monitor
-
 @media screen and (max-width: #{toEm(768px)}) {
 	:root {
 		--Header-padding: 2rem;
@@ -66,9 +44,6 @@
 		}
 	}
 }
-@media screen and (min-width: #{toEm(769px)}) {
-}
-
 @media screen and (max-width: #{toEm(425px)}) {
 	:root {
 		--Header-padding: 2rem;
@@ -92,24 +67,6 @@
 }
 
 /*For tablets */
-
-// @media screen and (max-width: #{toEm(375px)}) {
-// 	.Container {
-// 	}
-// }
-// For S phones
-// @media screen and (max-width: #{toEm(320px)}) {
-// 	.Container {
-// 	}
-// }
-// For xS phones
-
-// @supports (scroll-snap-points-y: repeat(100vh)) {
-// 	html,
-// 	html:focus-within {
-// 		scroll-snap-points-y: repeat(100vh);
-// 	}
-// }
 @supports (overflow-x: clip) {
 	html,
 	body {

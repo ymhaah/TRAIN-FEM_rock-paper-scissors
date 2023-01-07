@@ -131,11 +131,6 @@ a:not(.Button) {
   box-sizing: border-box;
 }
 
-html,
-html:focus-within {
-  scroll-behavior: smooth;
-}
-
 body {
   position: relative;
   margin: 0;
@@ -162,14 +157,7 @@ main {
   margin-inline: auto;
 }
 
-li,
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-li a,
-ul a {
+a {
   text-decoration: none;
 }
 
@@ -259,7 +247,7 @@ img {
   z-index: 100;
   top: 0;
   left: 0;
-  background-color: hsla(var(--clr-alpha-black), 0.7);
+  background-color: hsla(var(--clr-alpha-black)/0.7);
 }
 #bg-out-Of-Focus[aria-expanded=true] #rules {
   padding: 1.5rem 0;

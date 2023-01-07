@@ -1,6 +1,3 @@
-import { setSpecialThings, changeAttribute, log } from "./functions.js";
-import { header, game } from "./var.js";
-
 let triangle = document.querySelector(".triangle");
 let shadow = document.querySelector(".shadow");
 
@@ -60,7 +57,7 @@ function gHouse(ele) {
 
 function gWinner(ele) {
 	duration = duration - 0.4;
-	delay = 6;
+	delay = 5.5;
 	let tl = gsap.timeline();
 
 	tl.fromTo(

@@ -1,8 +1,8 @@
-import { setSpecialThings, changeAttribute, log } from "./functions.js";
+import { setSpecialThings, changeAttribute } from "./functions.js";
 import { header, game } from "./var.js";
 import { gChosen, gNotChosen, gHouse, gWinner } from "./gsap.js";
 
-log(`Made with Love by Youssef Hafnawy`);
+console.log(`Made with Love by Youssef Hafnawy`);
 ////////////////////////////////////////////////////////////////////////
 
 let resetButton = document.querySelector("#resetButton");
@@ -30,18 +30,17 @@ resetButton.onclick = () => {
 	resetLocalStorage();
 };
 // ######################################
-let hero = document.querySelector(".game__hero");
-
 let afterResultSection = document.querySelector("#game-result");
 let playAgainButton = document.querySelector("#game-result button");
+let result = document.querySelector(".Button--result");
+
+result.onclick = () => {
+	window.location.reload();
+};
 
 function setAfterResultState() {
 	changeAttribute(afterResultSection, "aria-hidden", false);
 	changeAttribute(playAgainButton, "tabindex", 0);
-}
-function setBeforeResultState() {
-	changeAttribute(afterResultSection, "aria-hidden", true);
-	changeAttribute(playAgainButton, "tabindex", -1);
 }
 
 // to pick a random item
@@ -53,8 +52,14 @@ let house = housePicked();
 
 game.items.forEach((item) => {
 	item.button.onclick = () => {
+		// to stop clicking after the animation start
+		game.items.forEach((item) => {
+			item.button.style.pointerEvents = "none";
+		});
+
+		// if draw reselect house
+		// it is a 3 lire if because there is a possibility of being draw agin
 		if (house.name == item.name) {
-			// if draw
 			house = housePicked();
 			if (house.name == item.name) {
 				house = housePicked();
@@ -65,6 +70,7 @@ game.items.forEach((item) => {
 		}
 
 		// ######################################
+		// what happen to the item we chose
 		setSpecialThings(
 			item,
 			game.items,
@@ -77,7 +83,7 @@ game.items.forEach((item) => {
 		);
 
 		// ######################################
-
+		// what happen to the item the house chose
 		setSpecialThings(
 			house,
 			game.items,
@@ -104,28 +110,38 @@ game.items.forEach((item) => {
 
 		if (item.name == house.rules.win) {
 			// if you lose
-			updateScoreValue(--scoreValueNum);
+
+			// to update the score value after the animation is completed
+			setTimeout(function () {
+				// to stop the score value to get under 0
+				if (scoreValueNum < 0) {
+					resetLocalStorage();
+				} else if (scoreValueNum > 0) {
+					updateScoreValue(--scoreValueNum);
+				}
+			}, 6000);
+
 			SetWinner(house);
 			changeAttribute(
 				document.querySelector(".you-lose"),
 				"aria-hidden",
 				false
 			);
-			// to stop the score value to get under 0
-			if (scoreValueNum < 0) {
-				resetLocalStorage();
-			}
-			console.log("loser");
 		} else if (item.name != house.rules.win) {
 			// if you win
-			updateScoreValue(++scoreValueNum);
+
+			// to update the score value after the animation is completed
+			setTimeout(function () {
+				updateScoreValue(++scoreValueNum);
+			}, 6000);
+
 			SetWinner(item);
+
 			changeAttribute(
 				document.querySelector(".you-win"),
 				"aria-hidden",
 				false
 			);
-			console.log("winner");
 		} else {
 			// if something go wrong
 			resetLocalStorage();
@@ -163,8 +179,5 @@ openRulesButton.onclick = () => {
 	showRules();
 };
 closeRulesButton.onclick = () => {
-	hidRules();
-};
-rulesSection.onclick = () => {
 	hidRules();
 };
