@@ -36,7 +36,7 @@ Users should be able to:
 ### Links
 
 -   [Solution URL](https://www.frontendmentor.io/solutions/rock-paper-scissors-game-mtr0w2yySQ)
--   [Live Site URL](https://ymhaah.github.io/rock-paper-scissors/)
+-   [Live Site URL](https://ymhaah.github.io/TRAIN-FEM_rock-paper-scissors/)
 
 ## My process
 
