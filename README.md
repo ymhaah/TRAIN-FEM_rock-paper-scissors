@@ -1,4 +1,6 @@
 # Frontend Mentor - Rock, Paper, Scissors solution
+> Start at: Jan 2, 2023
+
 
 This is a solution to the [Rock, Paper, Scissors challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rock-paper-scissors-game-pTgwgvgH). FrontendMentor is a platform where developers can improve their front-end skills by building real projects and receiving feedback from the community.
 
